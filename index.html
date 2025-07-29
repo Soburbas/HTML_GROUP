@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ToDo List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="light-theme">
+
+  <div class="container">
+
+    <button id="themeToggle" class="theme-btn" onclick="toggleTheme()">🌗 Переключить тему</button>
+
+    <!-- Блок авторизации -->
+    <div id="authSection" class="centered-section">
+      <h2>Добро пожаловать</h2>
+      <input type="text" id="loginInput" placeholder="Логин" autocomplete="username" />
+      <input type="password" id="passwordInput" placeholder="Пароль" autocomplete="current-password" />
+      <div class="auth-buttons">
+        <button onclick="register()">Зарегистрироваться</button>
+        <button onclick="login()">Войти</button>
+      </div>
+      <p id="authMessage" class="message"></p>
+    </div>
+
+    <!-- Блок ToDo -->
+    <div id="todoSection" class="centered-section" style="display:none;">
+      <h1>Привет, <span id="usernameDisplay"></span>!</h1>
+
+      <div class="input-section">
+        <input type="text" id="taskInput" placeholder="Новая задача" />
+        <button onclick="addTask()">Добавить</button>
+      </div>
+
+      <ul id="taskList"></ul>
+
+      <div class="stats">
+        <p>Всего задач: <span id="totalTasks">0</span></p>
+        <p>Выполнено: <span id="completedTasks">0</span></p>
+      </div>
+
+      <button class="logout-btn" onclick="logout()">🚪 Выйти</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

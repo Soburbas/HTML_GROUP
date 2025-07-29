@@ -1,0 +1,214 @@
+/* Корневая тема и переход */
+:root {
+  --bg-light: #f9f9f9;
+  --text-light: #222;
+  --btn-bg-light: #007bff;
+  --btn-hover-light: #0056b3;
+
+  --bg-dark: #121212;
+  --text-dark: #e0e0e0;
+  --btn-bg-dark: #1e90ff;
+  --btn-hover-dark: #0b74c9;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.dark-theme {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Основной контейнер */
+.container {
+  background-color: inherit;
+  width: 360px;
+  padding: 25px 30px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  text-align: center;
+}
+
+/* Кнопка переключения темы */
+.theme-btn {
+  background-color: var(--btn-bg-light);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.25s ease;
+  user-select: none;
+}
+body.dark-theme .theme-btn {
+  background-color: var(--btn-bg-dark);
+}
+.theme-btn:hover {
+  background-color: var(--btn-hover-light);
+}
+body.dark-theme .theme-btn:hover {
+  background-color: var(--btn-hover-dark);
+}
+
+/* Центрированный блок */
+.centered-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Поля ввода */
+input[type="text"],
+input[type="password"] {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: var(--btn-bg-light);
+}
+body.dark-theme input[type="text"],
+body.dark-theme input[type="password"] {
+  background-color: #1e1e1e;
+  border-color: #444;
+  color: var(--text-dark);
+}
+body.dark-theme input[type="text"]:focus,
+body.dark-theme input[type="password"]:focus {
+  border-color: var(--btn-bg-dark);
+}
+
+/* Кнопки */
+.auth-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+button {
+  cursor: pointer;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--btn-bg-light);
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.25s ease;
+}
+body.dark-theme button {
+  background-color: var(--btn-bg-dark);
+}
+button:hover {
+  background-color: var(--btn-hover-light);
+}
+body.dark-theme button:hover {
+  background-color: var(--btn-hover-dark);
+}
+
+/* Стиль для кнопки выхода */
+.logout-btn {
+  margin-top: 20px;
+  background-color: #dc3545;
+}
+.logout-btn:hover {
+  background-color: #a71d2a;
+}
+
+/* ToDo ввод и список */
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.input-section input {
+  flex-grow: 1;
+  font-size: 1rem;
+}
+
+ul#taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+ul#taskList li {
+  background-color: #eee;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: background-color 0.2s;
+}
+
+body.dark-theme ul#taskList li {
+  background-color: #2a2a2a;
+}
+
+ul#taskList li.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+ul#taskList li:hover {
+  background-color: #d1e7ff;
+}
+body.dark-theme ul#taskList li:hover {
+  background-color: #3a4f7a;
+}
+
+ul#taskList li button {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+ul#taskList li button:hover {
+  background-color: #a71d2a;
+}
+
+/* Статистика */
+.stats p {
+  margin: 4px 0;
+  font-weight: 600;
+}
+
+/* Сообщение об ошибке или статусе */
+.message {
+  color: #dc3545;
+  font-weight: 600;
+  min-height: 24px;
+  margin-top: 10px;
+}
+
