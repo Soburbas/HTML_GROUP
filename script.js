@@ -1,11 +1,9 @@
 let currentUser = null;
 
 window.onload = () => {
-  // При загрузке страницы ставим тему из localStorage
   const savedTheme = localStorage.getItem('theme') || 'light';
   setTheme(savedTheme);
 
-  // Привязываем кнопку переключения темы, чтобы меняла и сохраняла тему
   document.getElementById('themeToggle').onclick = () => {
     const newTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
     setTheme(newTheme);
@@ -21,7 +19,6 @@ function setTheme(theme) {
   localStorage.setItem('theme', theme);
 }
 
-// Регистрация пользователя
 function register() {
   const login = document.getElementById('loginInput').value.trim();
   const password = document.getElementById('passwordInput').value;
@@ -49,7 +46,6 @@ function register() {
   messageEl.textContent = 'Регистрация успешна! Теперь войдите.';
 }
 
-// Вход
 function login() {
   const login = document.getElementById('loginInput').value.trim();
   const password = document.getElementById('passwordInput').value;
@@ -72,14 +68,12 @@ function login() {
   loadTasks();
 }
 
-// Показать ToDo и скрыть форму входа
 function showTodoApp() {
   document.getElementById('authSection').style.display = 'none';
   document.getElementById('todoSection').style.display = 'flex';
   document.getElementById('usernameDisplay').textContent = currentUser;
 }
 
-// Выход из аккаунта
 function logout() {
   currentUser = null;
   document.getElementById('authSection').style.display = 'flex';
@@ -87,7 +81,6 @@ function logout() {
   clearTasksUI();
 }
 
-// Добавить задачу
 function addTask() {
   const input = document.getElementById('taskInput');
   const text = input.value.trim();
@@ -101,7 +94,6 @@ function addTask() {
   loadTasks();
 }
 
-// Загрузить задачи пользователя
 function loadTasks() {
   const list = document.getElementById('taskList');
   list.innerHTML = '';
@@ -118,10 +110,8 @@ function loadTasks() {
       li.classList.add('completed');
       completedCount++;
     }
-    // Клик по задаче — переключить статус
     li.onclick = () => toggleTaskDone(idx);
 
-    // Кнопка удалить
     const delBtn = document.createElement('button');
     delBtn.textContent = 'Удалить';
     delBtn.onclick = e => {
@@ -137,14 +127,12 @@ function loadTasks() {
   document.getElementById('completedTasks').textContent = completedCount;
 }
 
-// Очистить UI задач при выходе
 function clearTasksUI() {
   document.getElementById('taskList').innerHTML = '';
   document.getElementById('totalTasks').textContent = '0';
   document.getElementById('completedTasks').textContent = '0';
 }
 
-// Переключить статус "выполнено"
 function toggleTaskDone(idx) {
   let users = JSON.parse(localStorage.getItem('users') || '{}');
   let tasks = users[currentUser].tasks;
@@ -153,7 +141,6 @@ function toggleTaskDone(idx) {
   loadTasks();
 }
 
-// Удалить задачу
 function deleteTask(idx) {
   let users = JSON.parse(localStorage.getItem('users') || '{}');
   let tasks = users[currentUser].tasks;
@@ -162,7 +149,6 @@ function deleteTask(idx) {
   loadTasks();
 }
 
-// Переключение темы — кнопка в шапке
 function toggleTheme() {
   const isDark = document.body.classList.toggle('dark-theme');
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
