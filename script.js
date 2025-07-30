@@ -27,12 +27,14 @@ function register() {
   messageEl.textContent = '';
 
   if (!login || !password) {
+    messageEl.style.color = '#dc3545';
     messageEl.textContent = 'Введите логин и пароль!';
     return;
   }
 
   let users = JSON.parse(localStorage.getItem('users') || '{}');
   if (users[login]) {
+    messageEl.style.color = '#dc3545';
     messageEl.textContent = 'Пользователь уже существует!';
     return;
   }
